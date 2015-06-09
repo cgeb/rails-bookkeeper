@@ -1,0 +1,25 @@
+<ul class="nav">
+  <% if current_user %>
+    <li>
+      <div class="nav_item"><%= link_to "New Journal", new_user_journal_path(current_user), class: "btn btn-success btn-small" %></div>
+    </li>
+  <% else %>
+    <li>
+      <div class="nav_item"><%= link_to "Login", login_path, class: "btn btn-success btn-small"%></div>
+    </li>
+  <% end %>
+  <% if current_user %>
+    <li>
+      <div class="nav_item"><%= link_to "New Account", new_user_account_path(current_user), class: "btn btn-success btn-small" %></div>
+    </li>
+  <% else %>
+    <li>
+      <div class="nav_item"><%= link_to "Register", register_path, class: "btn btn-success btn-small" %></div>
+    </li>
+  <% end %>
+  <% if current_user %>
+    <li>
+      <div class="nav_item"><%= link_to "Logout", logout_path, class: "btn btn-success btn-small", method: "delete" %></div>
+    </li>
+  <% end %>
+</ul>

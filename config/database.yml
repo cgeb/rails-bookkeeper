@@ -1,0 +1,15 @@
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: rails_bookkeeper_development
+  pool: 5
+  username: chris-yukari
+  password: elty1523
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: rails_bookkeeper_test
+  pool: 5
+  username: chris-yukari
+  password: elty1523

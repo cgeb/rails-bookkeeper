@@ -1,0 +1,24 @@
+<h3><%= @account.name %></h3>
+<h4>Current Amount: <%= @account.amount %></h4>
+
+<% @journals.each do |journal| %>
+  <div class="well">
+    <strong>Debits:</strong>
+    <% journal.debit_accounts.each_with_index do |debit_account, index| %>
+      <% if debit_account != "" %>
+        <p><%= "#{find_account_name(debit_account)} #{journal.debit_amounts[index]}" %></p>
+      <% end %>
+    <% end %>
+    <strong>Credits:</strong>
+    <% journal.credit_accounts.each_with_index do |credit_account, index| %>
+      <% if credit_account != "" %>
+        <p><%= "#{find_account_name(credit_account)} #{journal.credit_amounts[index]}" %></p>
+      <% end %>
+    <% end %>
+    <p><strong>Description:</strong> <%= journal.description %></p>
+  </div>
+<% end %>
+
+<%= link_to "<-- Back to Chart of Accounts", chartofaccounts_path %>
+
+

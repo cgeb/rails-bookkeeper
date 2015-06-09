@@ -1,0 +1,13 @@
+<h4>Hello, <%= current_user.username %>!</h4>
+
+<div>Your accounts:</div>
+<ul>
+  <% @classifications.each do |classification| %>
+    <h5><%= classification.name %>:</h5>
+    <% @accounts.each do |account| %> 
+      <% if account.classification == classification %>
+        <li><%= link_to "#{account.name}: #{account.amount}", user_account_path(current_user, account) %></li>
+      <% end %>
+    <% end %>
+  <% end %>
+</ul>

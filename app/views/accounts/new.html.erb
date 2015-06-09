@@ -1,0 +1,18 @@
+<h3>New Account</h3>
+
+<div class="well">
+  <%= form_for [@user, @account] do |f| %>
+    <div class='control-group'>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div class='control-group'>
+      <% @classifications.each do |classification| %>
+        <%= f.label(:classification_id, classification.name, class: "radio inline") %>
+        <%= f.radio_button(:classification_id, classification.id) %>
+      <% end %>
+    </div>
+    <br/>
+    <%= f.submit "Create account", class: "btn btn-primary" %>
+  <% end %>
+</div>

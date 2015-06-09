@@ -1,0 +1,46 @@
+<h3>New Journal Entry</h3>
+
+<div class="well">
+  <%= form_for [@user, @journal] do |f| %>
+    <div class='control-group'>
+      <h5>Debit Accounts:</h5>
+    </div>
+    <div class='control-group'>
+      <%= f.collection_select :debit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[debit_accounts][]'} %>
+      <%= f.text_field :debit_amounts, name: "journal[debit_amounts][]", placeholder: "Input debit amount here" %>
+    </div>
+    <div class='control-group'>
+      <%= f.collection_select :debit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[debit_accounts][]'} %>
+      <%= f.text_field :debit_amounts, name: "journal[debit_amounts][]", placeholder: "Input debit amount here" %>
+    </div>
+    <div class='control-group'>
+      <%= f.collection_select :debit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[debit_accounts][]'} %>
+      <%= f.text_field :debit_amounts, name: "journal[debit_amounts][]", placeholder: "Input debit amount here" %>
+    </div>
+
+    <hr>
+
+    <div class='control-group'>
+      <h5>Credit Accounts:</h5>
+    </div>
+    <div class='control-group'>
+      <%= f.collection_select :credit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[credit_accounts][]'} %>
+      <%= f.text_field :credit_amounts, name: "journal[credit_amounts][]", placeholder: "Input credit amount here" %>
+    </div>
+    <div class='control-group'>
+      <%= f.collection_select :credit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[credit_accounts][]'} %>
+      <%= f.text_field :credit_amounts, name: "journal[credit_amounts][]", placeholder: "Input credit amount here" %>
+    </div>
+    <div class='control-group'>
+      <%= f.collection_select :credit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[credit_accounts][]'} %>
+      <%= f.text_field :credit_amounts, name: "journal[credit_amounts][]", placeholder: "Input credit amount here" %>
+    </div>
+    <hr>
+    <div>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <br/>
+    <%= f.submit class: "btn btn-primary" %>
+  <% end %>
+</div>
