@@ -14,27 +14,16 @@ class JournalsController < ApplicationController
   def create
     @journal = Journal.new(params.require(:journal).permit!)
     @journal.user = User.find_by(id: params[:user_id])
-
-    @journal.debit_accounts.each_with_index do |debit_account, index|
-      if debit_account != ""
-        @account = Account.find_by(id: debit_account) 
-        @account.update_attributes(:amount => @account.amount + @journal.debit_amounts[index].to_i)
-        @journal.accounts << @account
-      end
-    end
-
-    @journal.credit_accounts.each_with_index do |credit_account, index|
-      if credit_account != ""
-        @account = Account.find_by(id: credit_account) 
-        @account.update_attributes(:amount => @account.amount - @journal.credit_amounts[index].to_i)
-        @journal.accounts << @account
-      end
-    end
+    
+    @journal.get_debits
+    @journal.get_credits
 
     if @journal.save
       flash["notice"] = "Journal was created!"
       redirect_to chartofaccounts_path
     else
+      @user = current_user
+      @accounts = @user.accounts
       render 'new'
     end
   end

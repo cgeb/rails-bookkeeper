@@ -1,41 +1,55 @@
+<%= javascript_include_tag "journals" %>
+
+<%= render 'shared/error', item: @journal %>
+
 <h3>New Journal Entry</h3>
 
 <div class="well">
   <%= form_for [@user, @journal] do |f| %>
-    <div class='control-group'>
-      <h5>Debit Accounts:</h5>
+    <div id="debit-group">
+      <div class='control-group'>
+        <h5>Debit Accounts:</h5>
+      </div>
+      <div class='control-group'>
+        <%= f.collection_select :debit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[debit_accounts][]'} %>
+        <%= f.text_field :debit_amounts, name: "journal[debit_amounts][]", placeholder: "Input debit amount here" %>
+      </div>
     </div>
-    <div class='control-group'>
-      <%= f.collection_select :debit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[debit_accounts][]'} %>
-      <%= f.text_field :debit_amounts, name: "journal[debit_amounts][]", placeholder: "Input debit amount here" %>
-    </div>
-    <div class='control-group'>
-      <%= f.collection_select :debit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[debit_accounts][]'} %>
-      <%= f.text_field :debit_amounts, name: "journal[debit_amounts][]", placeholder: "Input debit amount here" %>
-    </div>
-    <div class='control-group'>
-      <%= f.collection_select :debit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[debit_accounts][]'} %>
-      <%= f.text_field :debit_amounts, name: "journal[debit_amounts][]", placeholder: "Input debit amount here" %>
+
+    <a href="#" id="add-new-debit" data-remote="true">+ Add Debit Line</a>
+
+    <div class="hide" id="new-debit-form">
+      <div class='control-group'>
+        <%= f.collection_select :debit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[debit_accounts][]'} %>
+        <%= f.text_field :debit_amounts, name: "journal[debit_amounts][]", placeholder: "Input debit amount here" %>
+        <a href="#" id="remove-new-debit" data-remote="true">- Remove</a>
+      </div>
     </div>
 
     <hr>
 
-    <div class='control-group'>
-      <h5>Credit Accounts:</h5>
+    <div id="credit-group">
+      <div class='control-group'>
+        <h5>Credit Accounts:</h5>
+      </div>
+      <div class='control-group'>
+        <%= f.collection_select :credit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[credit_accounts][]'} %>
+        <%= f.text_field :credit_amounts, name: "journal[credit_amounts][]", placeholder: "Input credit amount here" %>
+      </div>
     </div>
-    <div class='control-group'>
-      <%= f.collection_select :credit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[credit_accounts][]'} %>
-      <%= f.text_field :credit_amounts, name: "journal[credit_amounts][]", placeholder: "Input credit amount here" %>
+
+    <a href="#" id="add-new-credit" data-remote="true">+ Add Credit Line</a>
+
+    <div class="hide" id="new-credit-form">
+      <div class='control-group'>
+        <%= f.collection_select :credit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[credit_accounts][]'} %>
+        <%= f.text_field :credit_amounts, name: "journal[credit_amounts][]", placeholder: "Input credit amount here" %>
+        <a href="#" id="remove-new-credit" data-remote="true">- Remove</a>
+      </div>
     </div>
-    <div class='control-group'>
-      <%= f.collection_select :credit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[credit_accounts][]'} %>
-      <%= f.text_field :credit_amounts, name: "journal[credit_amounts][]", placeholder: "Input credit amount here" %>
-    </div>
-    <div class='control-group'>
-      <%= f.collection_select :credit_accounts, @accounts, :id, :name, {include_blank: true}, {:name => 'journal[credit_accounts][]'} %>
-      <%= f.text_field :credit_amounts, name: "journal[credit_amounts][]", placeholder: "Input credit amount here" %>
-    </div>
+
     <hr>
+
     <div>
       <%= f.label :description %>
       <%= f.text_area :description %>
