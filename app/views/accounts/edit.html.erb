@@ -1,0 +1,16 @@
+<%= render 'shared/error', item: @account %>
+
+<h3>Edit Account Name</h3>
+
+<div class="well">
+  <%= form_for [@user, @account] do |f| %>
+    <div class='control-group'>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <br/>
+    <%= f.submit "Update account", class: "btn btn-primary" %>
+  <% end %>
+</div>
+
+<%= link_to "<- Back to previous page", user_account_path(current_user, @account) %>

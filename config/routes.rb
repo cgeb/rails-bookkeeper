@@ -10,6 +10,6 @@ RailsBookkeeper::Application.routes.draw do
   resources :users, except: [:index, :show, :new, :destroy] do
     
     resources :journals, only: [:index, :show, :new, :create]
-    resources :accounts, only: [:show, :new, :create]
+    resources :accounts, only: [:show, :new, :create, :edit, :update]
   end
 end

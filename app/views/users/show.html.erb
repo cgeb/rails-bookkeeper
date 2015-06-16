@@ -1,6 +1,5 @@
-<h4>Hello, <%= current_user.username %>!</h4>
+<h4><%= current_user.username %>'s Chart of Accounts:</h4>
 
-<div>Your accounts:</div>
 <ul>
   <% @classifications.each do |classification| %>
     <h5><%= classification.name %>:</h5>
