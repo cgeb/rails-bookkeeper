@@ -1,4 +1,7 @@
-<h3><%= @account.name %></h3>
+<h3>
+  <%= @account.name %>
+  <small class="pull-right"><%= link_to "[Edit Account Name]", edit_user_account_path(current_user, @account) %></small>
+</h3> 
 <h4>Current Amount: <%= @account.amount %></h4>
 
 <% @journals.each do |journal| %>
