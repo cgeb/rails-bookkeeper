@@ -6,9 +6,8 @@ class JournalsController < ApplicationController
   end
 
   def new
-    @user = current_user
     @journal = Journal.new
-    @accounts = @user.accounts
+    @accounts = current_user.accounts
   end
 
   def create
@@ -22,8 +21,8 @@ class JournalsController < ApplicationController
       flash["notice"] = "Journal was created!"
       redirect_to chartofaccounts_path
     else
-      @user = current_user
-      @accounts = @user.accounts
+      @journal.reload_fields
+      @accounts = current_user.accounts
       render 'new'
     end
   end

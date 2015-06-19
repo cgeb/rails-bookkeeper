@@ -5,11 +5,11 @@ RailsBookkeeper::Application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
   get '/register', to: 'users#new'
-  get '/chartofaccounts', to: 'users#show'
+  get '/chartofaccounts', to: 'accounts#index'
 
   resources :users, except: [:index, :show, :new, :destroy] do
     
-    resources :journals, only: [:index, :show, :new, :create]
-    resources :accounts, only: [:show, :new, :create, :edit, :update]
+    resources :journals, except: [:show, :edit, :update, :destroy]
+    resources :accounts, except: :destroy
   end
 end
