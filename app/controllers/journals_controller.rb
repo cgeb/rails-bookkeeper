@@ -12,7 +12,7 @@ class JournalsController < ApplicationController
 
   def create
     @journal = Journal.new(params.require(:journal).permit!)
-    @journal.user = User.find_by(id: params[:user_id])
+    @journal.user = current_user
     
     @journal.get_debits
     @journal.get_credits

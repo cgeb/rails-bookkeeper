@@ -1,6 +1,6 @@
 <h3>
   <%= @account.name %>
-  <small class="pull-right"><%= link_to "[Edit Account Name]", edit_user_account_path(current_user, @account) %></small>
+  <small class="pull-right"><%= link_to "[Edit Account Name]", edit_account_path(@account) %></small>
 </h3> 
 <h4>Current Amount: <%= number_with_delimiter(@account.amount, delimiter: ",") %></h4>
 
