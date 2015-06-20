@@ -3,7 +3,7 @@
 <h3>Edit Account Name</h3>
 
 <div class="well">
-  <%= form_for [current_user, @account] do |f| %>
+  <%= form_for @account do |f| %>
     <div class='control-group'>
       <%= f.label :name %>
       <%= f.text_field :name %>
@@ -13,4 +13,4 @@
   <% end %>
 </div>
 
-<%= link_to "<- Back to previous page", user_account_path(current_user, @account) %>
+<%= link_to "<- Back to previous page", account_path(@account) %>

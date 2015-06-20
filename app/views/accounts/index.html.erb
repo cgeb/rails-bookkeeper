@@ -1,12 +1,12 @@
 <h4><%= current_user.username %>'s Chart of Accounts:</h4>
-<small><%= link_to "Show all Journals", user_journals_path(current_user) %></small>
+<small><%= link_to "Show all Journals", journals_path %></small>
 
 <ul>
   <% @classifications.each do |classification| %>
     <h5><%= classification.name %>:</h5>
     <% @accounts.each do |account| %> 
       <% if account.classification == classification %>
-        <li><%= link_to "#{account.name}: #{number_with_delimiter(account.amount, delimiter: ",")}", user_account_path(current_user, account) %></li>
+        <li><%= link_to "#{account.name}: #{number_with_delimiter(account.amount, delimiter: ",")}", account_path(account) %></li>
       <% end %>
     <% end %>
   <% end %>

@@ -1,7 +1,7 @@
 <ul class="nav">
   <% if current_user %>
     <li>
-      <div class="nav_item"><%= link_to "Create New Journal Entry", new_user_journal_path(current_user), class: "btn btn-success btn-small" %></div>
+      <div class="nav_item"><%= link_to "Create New Journal Entry", new_journal_path, class: "btn btn-success btn-small" %></div>
     </li>
   <% else %>
     <li>
@@ -10,7 +10,7 @@
   <% end %>
   <% if current_user %>
     <li>
-      <div class="nav_item"><%= link_to "Create New Account", new_user_account_path(current_user), class: "btn btn-success btn-small" %></div>
+      <div class="nav_item"><%= link_to "Create New Account", new_account_path, class: "btn btn-success btn-small" %></div>
     </li>
   <% else %>
     <li>

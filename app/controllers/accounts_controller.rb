@@ -35,7 +35,7 @@ class AccountsController < ApplicationController
   def update
     if @account.update(params.require(:account).permit(:name))
       flash["notice"] = "This account has been updated."
-      redirect_to user_account_path(current_user, @account)
+      redirect_to account_path(@account)
     else
       render 'edit'
     end

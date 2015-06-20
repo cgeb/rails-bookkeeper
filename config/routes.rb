@@ -7,9 +7,9 @@ RailsBookkeeper::Application.routes.draw do
   get '/register', to: 'users#new'
   get '/chartofaccounts', to: 'accounts#index'
 
-  resources :users, except: [:index, :show, :new, :destroy] do
+  resources :users, except: [:index, :show, :new, :destroy]
     
-    resources :journals, except: [:show, :edit, :update, :destroy]
-    resources :accounts, except: :destroy
-  end
+  resources :journals, except: [:show, :edit, :update, :destroy]
+  resources :accounts, except: :destroy
+  
 end
